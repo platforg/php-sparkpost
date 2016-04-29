@@ -1,6 +1,6 @@
 <?php
 namespace Examples\Unwrapped;
-require_once (dirname(__FILE__).'/../bootstrap.php');
+require_once(dirname(__FILE__) . '/../bootstrap.php');
 
 //pull in API key config
 $configFile = file_get_contents(dirname(__FILE__) . '/../example-config.json');
@@ -11,15 +11,14 @@ use GuzzleHttp\Client;
 use Ivory\HttpAdapter\Guzzle6HttpAdapter;
 
 $httpAdapter = new Guzzle6HttpAdapter(new Client());
-$sparky = new SparkPost($httpAdapter, ['key'=>$config['api-key']]);
+$sparky = new SparkPost($httpAdapter, array('key' => $config['api-key']));
 
 try {
-  $sparky->setupUnwrapped('webhooks');
+    $sparky->setupUnwrapped('webhooks');
 
-  $results = $sparky->webhooks->get();
+    $results = $sparky->webhooks->get();
 
-  echo 'Congrats you can use your SDK!';
+    echo 'Congrats you can use your SDK!';
 } catch (\Exception $exception) {
-  echo $exception->getMessage();
+    echo $exception->getMessage();
 }
-?>
