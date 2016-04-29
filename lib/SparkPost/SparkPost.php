@@ -136,7 +136,7 @@ class SparkPost
         // create Configuration for http adapter
         $httpConfig = new Configuration();
         $baseUrl = $config['protocol'] . '://' . $config['host'] . ($config['port'] ? ':' . $config['port'] : '') . '/api/' . $config['version'];
-        $httpConfig->setBaseUri($baseUrl);
+        $httpConfig->getMessageFactory()->setBaseUrl($baseUrl);
         $httpConfig->setUserAgent('php-sparkpost/' . $composer['version']);
 
         return $httpConfig;
